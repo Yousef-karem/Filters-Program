@@ -12,3 +12,5 @@ void save_image(unsigned char out_image[SIZE][SIZE]);
 void invert_filter();
 //allows the user to rotate the image clockwise by 90º, 180º or 270º as the user chooses.
 void Rotate_Image();
+void Black_white();
+void Flip_Image();
