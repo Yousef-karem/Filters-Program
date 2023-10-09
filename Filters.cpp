@@ -6,17 +6,17 @@ int start_massage()
 {
     const char* message1 = R"(
 Hello
-Welcome in our first project
-Please select a filter to apply or 0 to exit:)";
+Welcome in our program
+Please select a filter to apply or 0 to exit:
 
-    cout << message1 << std::endl;
-    const char* message2 = R"(
-1- Invert Image
-2- Rotate Image
-3- Black & white
-4 -Flip Image
+1-Invert Image
+2-Rotate Image
+3-Black & white
+4-Flip Image
+5-merge images
+6-darken or lighten image
 0- Exit)";
-    cout << message2 << std::endl;
+    cout << message1 << std::endl;
     int Choice_filter;cin>>Choice_filter;
     return Choice_filter;
 }
@@ -164,6 +164,56 @@ Please select the degree
         for (int j = 0; j < SIZE; j++) {
             image[i][j]=new_image[i][j];
         }
+    }
+    save_image(image);
+    showGSBMP(image);
+}
+void Merge_images()
+{
+    unsigned char image1[SIZE][SIZE],image2[SIZE][SIZE],new_image[SIZE][SIZE];
+    cout<<"Enter the source image file name for the First image: \n";
+    load_image(image1);
+    cout<<"Enter the source image file name for the Second image: \n";
+    load_image(image2);
+    for(int i=0;i<SIZE;i++)
+    {
+        for(int j=0;j<SIZE;j++)
+        {
+            new_image[i][j]= (image1[i][j]+image2[i][j])/2;
+        }
+    }
+    save_image(new_image);
+    showGSBMP(new_image);
+}
+void Darken_lighten_image()
+{
+    unsigned char image[SIZE][SIZE];
+    cout<<"Enter the source image file name : \n";
+    load_image(image);
+    const char* message = R"(
+"Do you want to Darken or lighten ?\n"
+1- Darken
+2- lighten
+0-exit
+)";
+    cout<<message<<'\n';
+    int choice;cin>>choice;
+
+    switch (choice)
+    {
+        case 1:
+            for(int i=0;i<SIZE;i++) {
+                for (int j = 0; j < SIZE; j++) {
+                    image[i][j] =image[i][j]/2;
+                }
+            }
+            break;
+        case 2:
+            for(int i=0;i<SIZE;i++) {
+                for (int j = 0; j < SIZE; j++) {
+                    image[i][j] =image[i][j]+(255-image[i][j])/2;
+                }
+            }
     }
     save_image(image);
     showGSBMP(image);
