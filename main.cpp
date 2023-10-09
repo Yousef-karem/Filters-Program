@@ -13,6 +13,12 @@ int main()
         case 2:
             Rotate_Image();
             break;
+        case 3:
+            Black_white();
+            break ;
+        case 4:
+            Flip_Image();
+            break;
     }
     cout<<"Thank you for your time\n";
 }
