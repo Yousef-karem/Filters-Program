@@ -19,6 +19,12 @@ int main()
         case 4:
             Flip_Image();
             break;
+        case 5 :
+            Merge_images();
+            break ;
+        case 6:
+             Darken_lighten_image();
+            break;
     }
     cout<<"Thank you for your time\n";
 }
