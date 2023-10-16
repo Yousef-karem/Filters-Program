@@ -8,4 +8,4 @@
 // Purpose: Program Filters to apply some edits for images
 Some things you must do it before using the program
 1-put the images in your cwd(current working directly)
-2-make a new folder with name (tmp) to save your image in it  
+2- create folder with name tmp  

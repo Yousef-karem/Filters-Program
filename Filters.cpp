@@ -42,7 +42,6 @@ void load_image()
 }
 void save_image()
 {
-    unsigned char out_image[SIZE][SIZE];
     string imageName;
 //    get the name of the new image
     cout<<"Enter the name of the new image: ";
@@ -52,8 +51,8 @@ void save_image()
     //current working directly + imageName + ".bmp"
     imageName+=".bmp";
     string path='\\'+imageName;
-    writeGSBMP(strcat(getcwd(cwd,sizeof(cwd)),path.c_str()),out_image);
-    cout<<"the image saved successfully in folder tmp with the new name ("<<imageName<<")."<<'\n';
+    writeGSBMP(strcat(getcwd(cwd,sizeof(cwd)),path.c_str()),image);
+    cout<<"the image saved successfully in your current working directly  ("<<strcat(getcwd(cwd,sizeof(cwd)),path.c_str())<<")."<<'\n';
 }
 void invert_filter()
 {
@@ -132,12 +131,11 @@ void Flip_Image()
 Please select the degree
 1- Vertically
 2- Horizontally
-0-save and exit
+0- exit
 )";
     cout<<message<<'\n';
     int x;cin>>x;
     if(!x){
-        save_image();
         return;
     }
     unsigned char new_image[SIZE][SIZE];
@@ -146,14 +144,14 @@ Please select the degree
         case 1:
             for (int i = 0; i < SIZE; i++) {
                 for (int j = 0; j < SIZE; j++) {
-                    new_image[SIZE -i][SIZE -j ] = image[i][j];
+                    new_image[SIZE -i -1][SIZE -j - 1] = image[i][j];
                 }
             }
             break;
         case 2:
             for (int i = 0; i < SIZE; i++) {
                 for (int j = 0; j< (SIZE); j++) {
-                    new_image[i][SIZE-j]=image[i][j];
+                    new_image[i][SIZE-j-1]=image[i][j];
                 }
             }
             break;
@@ -168,8 +166,7 @@ Please select the degree
 }
 void Merge_images()
 {
-    unsigned char image1[SIZE][SIZE],image2[SIZE][SIZE],new_image[SIZE][SIZE];
-    load_image();
+    unsigned char image1[SIZE][SIZE],image2[SIZE][SIZE];
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
             image1[i][j]=image[i][j];
@@ -185,10 +182,10 @@ void Merge_images()
     {
         for(int j=0;j<SIZE;j++)
         {
-            new_image[i][j]= (image1[i][j]+image2[i][j])/2;
+            image[i][j]= (image1[i][j]+image2[i][j])/2;
         }
     }
-    showGSBMP(new_image);
+    showGSBMP(image);
 }
 void Darken_lighten_image()
 {

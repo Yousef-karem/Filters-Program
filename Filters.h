@@ -32,6 +32,6 @@ void shuffle_image();
 void shrink_image();
 //allows the user to cut the quarter 1,2,3 or 4 from the select image
 void enlarge_image();
-//save the image to folder  tmp with the choice name
+//save the image in your cwd with the choice name
 void save_image();
 /*********************************************************/
