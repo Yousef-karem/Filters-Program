@@ -32,6 +32,8 @@ void shuffle_image();
 void shrink_image();
 //allows the user to cut the quarter 1,2,3 or 4 from the select image
 void enlarge_image();
+//This filter produces a bury version of the image.
+void Blur_Image();
 //save the image in your cwd with the choice name
 void save_image();
 /*********************************************************/
