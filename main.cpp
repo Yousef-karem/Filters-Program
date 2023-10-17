@@ -55,6 +55,9 @@ int main()
                 enlarge_image();
                 break;
             case 11:
+                Blur_Image();
+                break;
+            case 12:
                 save_image();
                 break;
         }

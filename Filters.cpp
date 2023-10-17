@@ -21,7 +21,8 @@ Please select a filter to apply or 0 to exit:
 8-shuffle image
 9-shrink_image
 10-enlarge_image
-11-Save the image to a file
+11-blur the image
+12-Save the image to a file
 0- Exit)";
     cout << message << std::endl;
     int Choice_filter;cin>>Choice_filter;
@@ -398,6 +399,21 @@ Shrink to (1/2), (1/3) or (1/4)?
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
             image[i][j]=new_image[i][j];
+        }
+    }
+    showGSBMP(image);
+}
+void Blur_Image() {
+    for (int i = 0; i < SIZE; i++){
+        for (int j =0 ; j <SIZE; j++){
+            image[i][j]= (image[i][j-1]+image[i-1][j]+image[i-1][j-1]+image[i+1][j-1]
+                          +image[i+1][j]+image[i+1][j+1]+image[i][j+1]+image[i-1][j+1])/8;
+        }
+    }
+    for (int i = 0; i < SIZE; i++){
+        for (int j =0 ; j <SIZE; j++){
+            image[i][j]= (image[i][j-1]+image[i-1][j]+image[i-1][j-1]+image[i+1][j-1]
+                          +image[i+1][j]+image[i+1][j+1]+image[i][j+1]+image[i-1][j+1])/8;
         }
     }
     showGSBMP(image);
