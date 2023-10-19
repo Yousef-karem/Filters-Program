@@ -418,3 +418,79 @@ void Blur_Image() {
     }
     showGSBMP(image);
 }
+void detect_image() {
+    memset(new_image, 255, sizeof(new_image));
+    black_white();
+    for (int i = 1; i < SIZE - 1; i++) {
+        for (int j = 1; j < SIZE - 1; j++) {
+            int d1 = 0, d2 = 0, d3 = 0, d4 = 0;
+            d1 = (image[i][j] - image[i][j + 1]);
+            d2 = (image[i][j] - image[i][j - 1]);
+            d3 = (image[i][j] - image[i + 1][j]);
+            d4 = (image[i][j] - image[i - 1][j]);
+            if (d1 > 50 || d3 > 50 || d2 > 50 || d4 > 50) {
+                new_image[i][j] = 0;
+            }
+        }
+    }
+}
+void mirror_image(){
+    const char* message = R"(
+Which quarter to enlarge ?
+1-Upper
+2-Lower
+3-Right
+4-Left
+)";
+    cout<<message<<'\n';
+    case 1:
+
+        for (int i = 0; i < SIZE / 2; i++) {
+            for (int j = 0; j < (SIZE); j++) {
+                image[SIZE - i-1][j] = image[i][j];
+
+            }
+        }
+        break;
+    case 2:
+
+        for (int i = 0; i < SIZE/2; i++) {
+            for (int j = 0; j< (SIZE); j++) {
+                image[i][j]=image[SIZE-i-1][j];
+
+            }
+        }
+        break;
+    case 3:
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j< (SIZE/2); j++) {
+                image[i][j]=image[i][SIZE-j-1];
+
+
+            }
+        }
+        braek;
+    case 4:
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j< (SIZE/2); j++) {
+                image[i][SIZE-j-1]=image[i][j];
+
+            }
+        }
+        break;
+    case 0:
+        return;
+}
+void crop_image(){
+    const char* message = R"(
+Please inter X Y L W
+)";
+    cout<<message<<'\n';
+    for(int i=0;i<SIZE;i++){
+        for(int j=0;j<SIZE;j++){
+            if(i>x&&i<=l+x&&j>y&&j<=w+y){
+                    continue;
+                }else image[i][j]=255;
+            }
+        }
+    }
