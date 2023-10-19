@@ -34,6 +34,12 @@ void shrink_image();
 void enlarge_image();
 //This filter produces a bury version of the image.
 void Blur_Image();
+//finds the edges of the drawings in the image
+void detect_image();
+//This filter mirrors 1/2 of the image
+void mirror_image();
+//This filter allows entering an x, y position and cutting a square of length and width l, w
+void crop_image();
 //save the image in your cwd with the choice name
 void save_image();
 /*********************************************************/

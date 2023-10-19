@@ -58,6 +58,15 @@ int main()
                 Blur_Image();
                 break;
             case 12:
+                detect_image();
+                break;
+            case 13:
+                mirror_image();
+                break ;
+            case 14:
+                crop_image();
+                break;
+            case 15:
                 save_image();
                 break;
         }
